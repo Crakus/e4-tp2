@@ -1,0 +1,38 @@
+* C:\Users\PC\Documents\ITBA\2020\1er cuatrimestre\Electro IV\Github posta\e4-tp2\simulacion\ej2\e4-tp2-ej2-4.asc
+V1 0 N006 0
+S1 N005 N011 0 N006 MYSW
+D1 N001 Vout MUR460
+D2 N002 N003 LUW-W5AP
+D3 N003 N004 LUW-W5AP
+D4 N004 N005 LUW-W5AP
+D5 N005 N009 LUW-W5AP
+D6 N009 N011 LUW-W5AP
+D7 Vout N002 LUW-W5AP
+R1 N008 N007 22
+R2 N011 0 0.1
+R3 N016 N015 7k
+R4 N010 0 0.1
+R5 Vcomp N012 10k
+R6 N013 N014 11.5k
+R7 0 N014 1k
+R8 N013 VFB 10k
+C1 Vout 0 470µ
+V2 Vcc 0 12
+L1 N001 Vcc 150µ
+M1 N001 N008 N010 N010 IRF530
+XU1 N014 N011 N013 opamp Aol=100K GBW=10Meg Slew=100Meg
+XU2 Vcomp VFB N010 N016 0 N007 Vcc N015 LT1241
+C2 N016 0 1n
+C3 VFB N012 100n
+.model D D
+.lib C:\Users\PC\Documents\LTspiceXVII\lib\cmp\standard.dio
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\PC\Documents\LTspiceXVII\lib\cmp\standard.mos
+.model MYSW SW(Ron=0.1 Roff=1Meg Vt=1 Vh=-0.4)
+.lib opamp.sub
+.ic I(L1)=4.2 V(Vout)=21 V(Vcomp)=2.4
+.tran 0 70m 0 10n
+.lib LT1241.sub
+.backanno
+.end
